@@ -38,6 +38,13 @@ namespace ArduinoBluetooth.Connection
             if (MessageReceived != null)
                 MessageReceived(sender, message);
         }
+        public delegate void AddOnConnectionEstablishedDelegate(object sender, string message);
+        public event AddOnConnectionEstablishedDelegate ConnectionEstablished;
+        private void OnConnectionEstablishedEvent(object sender, string message)
+        {
+            if (ConnectionEstablished != null)
+                ConnectionEstablished(sender, message);
+        }
         #endregion
 
         #region Commands
